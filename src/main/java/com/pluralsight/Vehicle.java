@@ -48,20 +48,21 @@ public class Vehicle extends Asset {
         //get the difference between current year and the year of the car
         int carAge = LocalDate.now().getYear() - year;
         BigDecimal cost = getOriginalCost();//get the original cost
+        BigDecimal percentCalculation = null;
 
         if (carAge <= 3) {//if the car age is > 3, perform calculations with big decimal to calculate -3%
-            BigDecimal percentCalculation = new BigDecimal("0.03").multiply(BigDecimal.valueOf(carAge));
+             percentCalculation = new BigDecimal("0.03").multiply(BigDecimal.valueOf(carAge));
             return cost.multiply(BigDecimal.ONE.subtract(percentCalculation));
         } else if (carAge >= 4 && carAge <= 6) {//if the car age is > 3, perform calculations with big decimal to calculate -6%
-            BigDecimal percentCalculation = new BigDecimal("0.06").multiply(BigDecimal.valueOf(carAge));
+            percentCalculation = new BigDecimal("0.06").multiply(BigDecimal.valueOf(carAge));
             return cost.multiply(BigDecimal.ONE.subtract(percentCalculation));
 
         } else if (carAge >= 7 && carAge <= 10) {//if the car age is > 3, perform calculations with big decimal to calculate 10%
-            BigDecimal percentCalculation = new BigDecimal("0.08").multiply(BigDecimal.valueOf(carAge));
+            percentCalculation = new BigDecimal("0.08").multiply(BigDecimal.valueOf(carAge));
             return cost.multiply(BigDecimal.ONE.subtract(percentCalculation));
         }
         if (carAge >= 10) {// perfomr calculations if car age greater than 10! will make this better!!
-            BigDecimal percentCalculation = new BigDecimal("0.10").multiply(BigDecimal.valueOf(carAge));
+            percentCalculation = new BigDecimal("0.10").multiply(BigDecimal.valueOf(carAge));
             return cost.multiply(BigDecimal.ONE.subtract(percentCalculation));
         }
         return cost;
